@@ -20,7 +20,6 @@ function expressionCalculator(expr) {
 
         if (strArr[i] == '(') { // calculate expression in brackets
             inBracketsResult = inBrackets(strArr, i);
-            if (inBracketsResult.result == null) return new TypeError("TypeError: Division by zero.");
             i = inBracketsResult.position // new index position after expression in brackets calculated
             stack.push(inBracketsResult.result);
         } else {
@@ -42,14 +41,8 @@ function inBrackets(myArray, openBracketPosition) {
     for (let i = openBracketPosition + 1; i < myArray.length; i++) {
         if (myArray[i] == ')') {
             result = calcString(stack); 
-            if (result === null) {
-                inBracketsResult.position = 0;
-                inBracketsResult.result = null;
-                return inBracketsResult;
-            } else {
-                stack.push(result)
-                bracketCount--
-            }
+            stack.push(result)
+            bracketCount--
             
             if (bracketCount == 0) {
                 inBracketsResult.position = i - 1;
@@ -84,7 +77,9 @@ function calcPair(first, operator, second) {
             result = String(firstNum * secondNum);
             break;
         case '/':
-            if (secondNum === 0) return null;
+            if (secondNum === 0) {
+                throw new TypeError("TypeError: Division by zero.");
+            }
             result = String(firstNum / secondNum);
             break;
     }
@@ -106,11 +101,7 @@ function calcString(myArray) {
             operation = myArray[i];
             second = myArray[i+1];
             result = calcPair(first, operation, second); 
-            if (result === null) {
-                return null;
-            } else {
-                temp.push(result);
-            }
+            temp.push(result);
             i++;            
         } else {
             temp.push(myArray[i]);
