@@ -28,7 +28,7 @@ function expressionCalculator(expr) {
         }
     }
 
-    return Number(calcString(stack));
+    return Number(calcString(['2', '+', '2']));
 }
 
 
