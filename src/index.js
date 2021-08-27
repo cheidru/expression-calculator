@@ -28,7 +28,9 @@ function expressionCalculator(expr) {
         }
     }
 
-    return Number(calcString(['2', '+', '2']));
+    let cal = calcString(stack);
+
+    return Number(cal);
 }
 
 
@@ -89,7 +91,7 @@ function calcPair(first, operator, second) {
     return result;
 }
 
-function calcString(srtArr) {
+function calcString(myArray) {
 
     let temp = [];
     let first = '';
@@ -98,11 +100,11 @@ function calcString(srtArr) {
     let result = '';
 
     // calculate * and / operators
-    for (let i = 0; i < strArr.length; i++) {
-        if (strArr[i] === '/' || strArr[i] === '*') {
+    for (let i = 0; i < myArray.length; i++) {
+        if (myArray[i] === '/' || myArray[i] === '*') {
             first = temp.pop();
-            operation = strArr[i];
-            second = strArr[i+1];
+            operation = myArray[i];
+            second = myArray[i+1];
             result = calcPair(first, operation, second); 
             if (result === null) {
                 return null;
