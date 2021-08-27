@@ -34,13 +34,13 @@ function expressionCalculator(expr) {
 }
 
 
-function inBrackets(strArr, openBracketPosition) {
+function inBrackets(myArray, openBracketPosition) {
     let stack = [];
     let bracketCount = 1;
     let result = '';
     let inBracketsResult = {};
-    for (let i = openBracketPosition + 1; i < strArr.length; i++) {
-        if (strArr[i] == ')') {
+    for (let i = openBracketPosition + 1; i < myArray.length; i++) {
+        if (myArray[i] == ')') {
             result = calcString(stack); 
             if (result === null) {
                 inBracketsResult.position = 0;
@@ -56,13 +56,13 @@ function inBrackets(strArr, openBracketPosition) {
                 inBracketsResult.result = stack.pop;
                 return inBracketsResult;
             }
-        } else if (strArr[i] == '(') {
-            inBracketResult = inBrackets(strArr, i);
+        } else if (myArray[i] == '(') {
+            inBracketResult = inBrackets(myArray, i);
             i = inBracketResult.position + 1;
             stack.push(inBracketResult.result);
             bracketCount++;
         } else {
-            stack.push(strArr[i]);
+            stack.push(myArray[i]);
         }
     }
 }
@@ -127,12 +127,12 @@ function calcString(myArray) {
     return first;
 }
 
-function checkBrackets(strArr) {
+function checkBrackets(myArray) {
     let stack = 0;
-    for (let i = 0; i < strArr.length; i++) {
-        if (strArr[i] == ')' && stack == 0) return false;
-        if (strArr[i] == '(' || strArr[i] == ')') {
-            strArr[i] == '(' ? stack++ : stack--;
+    for (let i = 0; i < myArray.length; i++) {
+        if (myArray[i] == ')' && stack == 0) return false;
+        if (myArray[i] == '(' || myArray[i] == ')') {
+            myArray[i] == '(' ? stack++ : stack--;
         }
     }
     return stack === 0;
