@@ -108,6 +108,8 @@ function calcString(myArray) {
         }
     }
 
+    if (temp.length == 1) {return temp.pop();}
+
         // calculate + and - operators
         first = temp[0];
     for (let i = 1; i < temp.length; i += 2) {
