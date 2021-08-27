@@ -11,12 +11,14 @@ function expressionCalculator(expr) {
     strArr = exprStr.split(''); // split string into letter array
     let inBracketsResult = {}; // first: calculation result or null if division by zero , second: index position of end
 
+    return exprStr;
+
     // check brackets pairing
     if (checkBrackets(strArr) === false) throw new ExpressionError("ExpressionError: Brackets must be paired");
 
     let stack = [];
 
-    return srtArr;
+
 
     for (let i = 0; i < strArr.length; i++) {
 
