@@ -7,7 +7,8 @@ function expressionCalculator(expr) {
     // write your solution here
 
     let exprStr = expr.replace(/ /g,'');  // remove spaces
-    let strArr[] = exprStr.split(''); // split string into letter array
+    let strArr = [];
+    strArr = exprStr.split(''); // split string into letter array
     let inBracketsResult = {}; // first: calculation result or null if division by zero , second: index position of end
 
     // check brackets pairing
