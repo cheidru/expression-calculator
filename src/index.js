@@ -113,7 +113,7 @@ function calcString(myArray) {
             }
             i++;            
         } else {
-            temp.push(strArr[i]);
+            temp.push(myArray[i]);
         }
     }
 
