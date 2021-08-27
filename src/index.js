@@ -16,6 +16,8 @@ function expressionCalculator(expr) {
 
     let stack = [];
 
+    return srtArr;
+
     for (let i = 0; i < strArr.length; i++) {
 
         if (strArr[i] == '(') { // calculate expression in brackets
