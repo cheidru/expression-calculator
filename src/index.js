@@ -16,8 +16,6 @@ function expressionCalculator(expr) {
 
     let stack = [];
 
-    return 8;
-
     for (let i = 0; i < strArr.length; i++) {
 
         if (strArr[i] == '(') { // calculate expression in brackets
@@ -67,7 +65,7 @@ function inBrackets(strArr, openBracketPosition) {
     }
 }
 
-function calcPair (first, operator, second) {
+function calcPair(first, operator, second) {
     
     let firstNum = Number(first);
     let secondNum = Number(second);
@@ -86,7 +84,6 @@ function calcPair (first, operator, second) {
         case '/':
             if (secondNum === 0) return null;
             result = String(firstNum / secondNum);
-
             break;
     }
     return result;
@@ -99,6 +96,7 @@ function calcString(srtArr) {
     let operation = '';
     let second = '';
     let result = '';
+
     // calculate * and / operators
     for (let i = 0; i < strArr.length; i++) {
         if (strArr[i] === '/' || strArr[i] === '*') {
@@ -135,7 +133,7 @@ function checkBrackets(strArr) {
             strArr[i] == '(' ? stack++ : stack--;
         }
     }
-    return stack == 0;
+    return stack === 0;
 }
 
 module.exports = {
