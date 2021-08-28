@@ -45,8 +45,7 @@ function inBrackets(myArray, openBracketPosition) {
         if (myArray[i] == '(') {
             inBracketResult = inBrackets(myArray, i);
             i = inBracketResult.position + 1;
-            stack.push(inBracketResult.result);
-            bracketCount++;        
+            stack.push(inBracketResult.result);     
 
         } else if (myArray[i] == ')') {
 			bracketCount--
