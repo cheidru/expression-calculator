@@ -136,18 +136,24 @@ function checkBrackets(myArray) {
 
 function splitExpression(expr) {
     let result = [];
+    let i = 0;
+    let j = 0;
 
-    for (let i = 0; i < expr.length; i++) {
-        if (expr[i] == "(" || expr[i] == ")" || expr[i] == "+" || expr[i] == "-" || expr[i] == "*" || expr[i] == "/") {
-            result.push(expr[i]);
-        } else {
+    for (i ; i < expr.length; i++) {
+        if (expr[i] !== " ") {
 
-            for (let j = i; j < expr.length; j++) {
-                if (expr[j] == "(" || expr[j] == ")" || expr[j] == "+" || expr[j] == "-" || expr[j] == "*" || expr[j] == "/") {
-                    result.push(expr.slice(i, j))
-                    i = j;
-                    break;
+            if (expr[i] == "(" || expr[i] == ")" || expr[i] == "+" || expr[i] == "-" || expr[i] == "*" || expr[i] == "/") {
+                result.push(expr[i]);
+
+            } else {
+
+                for (j = i ; j < expr.length; j++) {
+                    if (expr[j] == "(" || expr[j] == ")" || expr[j] == "+" || expr[j] == "-" || expr[j] == "*" || expr[j] == "/" || expr[j] == " ") {
+                        break;
+                    }
                 }
+                result.push(expr.slice(i, j))
+                i = j - 1;
             }
         }
     }
