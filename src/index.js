@@ -146,11 +146,10 @@ function splitExpression(expr) {
                 if (expr[j] == "(" || expr[j] == ")" || expr[j] == "+" || expr[j] == "-" || expr[j] == "*" || expr[j] == "/") {
                     result.push(expr.slice(i, j))
                 }
-            }
             break;
+            }
         }
     }
-
     return result;
 }
 
