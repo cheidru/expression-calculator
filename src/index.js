@@ -145,8 +145,9 @@ function splitExpression(expr) {
             for (let j = i; j < expr.length; j++) {
                 if (expr[j] == "(" || expr[j] == ")" || expr[j] == "+" || expr[j] == "-" || expr[j] == "*" || expr[j] == "/") {
                     result.push(expr.slice(i, j))
+                    i = j;
+                    break;
                 }
-            break;
             }
         }
     }
