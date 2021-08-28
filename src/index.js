@@ -125,13 +125,15 @@ function calcString(myArray) {
 function checkBrackets(myArray) {
     let stack = 0;
     for (let i = 0; i < myArray.length; i++) {
-        if (myArray[i] == ')' && stack == 0) {throw new ExpressionError("ExpressionError: Brackets must be paired");}
+        if (myArray[i] == ')' && stack == 0) {
+            throw new TypeError("ExpressionError: Brackets must be paired");
+        }
         if (myArray[i] == '(' || myArray[i] == ')') {
             myArray[i] == '(' ? stack++ : stack--;
         }
     }
 
-    if (stack != 0) {throw new ExpressionError("ExpressionError: Brackets must be paired");}
+    if (stack != 0) {throw new TypeError("ExpressionError: Brackets must be paired");}
 }
 
 function splitExpression(expr) {
