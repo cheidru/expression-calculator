@@ -6,13 +6,14 @@ function eval() {
 function expressionCalculator(expr) {
     // write your solution here
 
-    let exprStr = expr.replace(/ /g,'');  // remove spaces
+    // let exprStr = expr.replace(/ /g,'');  // remove spaces
+    let exprStr = expr.trim();
     let strArr = [];
-    strArr = exprStr.split(''); // split string into letter array
+    strArr = exprStr.split(' '); // split string into letter array
     let inBracketsResult = {}; // first: calculation result or null if division by zero , second: index position of end
 
     // check brackets pairing
-    if (checkBrackets(strArr) === false) throw new ExpressionError("ExpressionError: Brackets must be paired");
+    checkBrackets(strArr);
 
     let stack = [];
 
@@ -96,7 +97,7 @@ function calcString(myArray) {
 
     // calculate * and / operators
     for (let i = 0; i < myArray.length; i++) {
-        if (myArray[i] === '/' || myArray[i] === '*') {
+        if (myArray[i] == '/' || myArray[i] == '*') {
             first = temp.pop();
             operation = myArray[i];
             second = myArray[i+1];
@@ -123,12 +124,13 @@ function calcString(myArray) {
 function checkBrackets(myArray) {
     let stack = 0;
     for (let i = 0; i < myArray.length; i++) {
-        if (myArray[i] == ')' && stack == 0) return false;
+        if (myArray[i] == ')' && stack == 0) {throw new ExpressionError("ExpressionError: Brackets must be paired");}
         if (myArray[i] == '(' || myArray[i] == ')') {
             myArray[i] == '(' ? stack++ : stack--;
         }
     }
-    return stack === 0;
+
+    if (stack != 0) {throw new ExpressionError("ExpressionError: Brackets must be paired");}
 }
 
 module.exports = {
