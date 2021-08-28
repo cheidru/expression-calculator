@@ -9,7 +9,8 @@ function expressionCalculator(expr) {
     // let exprStr = expr.replace(/ /g,'');  // remove spaces
     let exprStr = expr.trim();
     let strArr = [];
-    strArr = exprStr.split(' '); // split string into letter array
+    // strArr = exprStr.split(' '); // split string into letter array
+    strArr = splitExpression(exprStr);
     let inBracketsResult = {}; // first: calculation result or null if division by zero , second: index position of end
 
     // check brackets pairing
@@ -132,6 +133,27 @@ function checkBrackets(myArray) {
 
     if (stack != 0) {throw new ExpressionError("ExpressionError: Brackets must be paired");}
 }
+
+function splitExpression(expr) {
+    let result = [];
+
+    for (let i = 0; i < expr.length; i++) {
+        if (expr[i] == "(" || expr[i] == ")" || expr[i] == "+" || expr[i] == "-" || expr[i] == "*" || expr[i] == "/") {
+            result.push(expr[i]);
+        } else {
+
+            for (let j = i; j < expr.length; j++) {
+                if (expr[j] == "(" || expr[j] == ")" || expr[j] == "+" || expr[j] == "-" || expr[j] == "*" || expr[j] == "/") {
+                    result.push(expr.slice(i, j))
+                }
+            }
+            break;
+        }
+    }
+
+    return result;
+}
+
 
 module.exports = {
     expressionCalculator
